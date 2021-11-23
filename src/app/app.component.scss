@@ -1,0 +1,40 @@
+img.twitter{
+  padding-left: 10px;
+}
+a.links{
+  display: flex;
+  position: center;
+  justify-content: center;
+}
+
+mat-drawer-container{
+  height: 100%;
+}
+
+img.github{
+  padding-right: 10px;
+}
+
+.logo{
+  width: 35px;
+  padding-left: 10px;
+}
+
+
+.logo-text{
+  font-family: 'Fredoka One', cursive;
+  font-weight: 10;
+  color: pink;
+}
+
+.isActive{
+  background-color: #673ab7;
+}
+
+mat-list{
+  mat-list-item{
+    button{
+      width: 100%;
+    }
+  }
+}
