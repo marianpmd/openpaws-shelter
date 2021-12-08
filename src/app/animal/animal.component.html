@@ -1,0 +1,45 @@
+<div class="main-div">
+  <carousel
+    [objectFit]="'cover'"
+    [cellWidth]="'100%'"
+    [height]="300"
+    [autoplay]="true"
+    [dots]="true"
+    [loop]="true"
+    [arrowsTheme]="'dark'" >
+
+    <div class="carousel-cell">
+      <img [src]="profile" alt="">
+    </div> <div class="carousel-cell">
+      <img [src]="main" alt="">
+    </div> <div class="carousel-cell">
+      <img [src]="additional" alt="">
+    </div>
+  </carousel>
+
+
+  <mat-card >
+    <mat-card-header>
+      <mat-card-title class="card-title">Information about {{animalData.name}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="first-card">
+      <table>
+        <tr>
+          <td>🔞</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </mat-card-content>
+
+
+  </mat-card>
+
+
+
+
+</div>

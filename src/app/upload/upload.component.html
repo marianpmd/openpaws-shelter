@@ -1,0 +1,86 @@
+<div style="width: 100%; height: 80%">
+<div class="main-div">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>Add a new animal 🐕</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="formGroup" class="uploadForm">
+        <mat-form-field appearance="fill" >
+          <mat-label>Name</mat-label>
+          <input matInput [formControl]="name" required>
+          <mat-error *ngIf="name.invalid">The name of the animal is required!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+          <mat-label>Animal Type</mat-label>
+          <mat-select required [formControl]="animalType">
+            <mat-option value="Dog">Dog</mat-option>
+            <mat-option value="Cat">Cat</mat-option>
+            <mat-option value="Hamster">Hamster</mat-option>
+          </mat-select>
+          <mat-error *ngIf="animalType.invalid">The type of the animal is required!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+          <mat-label>Age</mat-label>
+          <input matInput [formControl]="age" required>
+          <mat-error *ngIf="age.invalid">The age of the animal is required!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" >
+          <mat-label>Description</mat-label>
+          <textarea matInput [formControl]="description" required></textarea>
+          <mat-error *ngIf="description.invalid">The description is required!</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="uploadForm"> <!--*ngIf="formGroup.valid"-->
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>Add some pictures 🐶</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="fileInput">
+
+        <input id="fileInputProfile" type="file" (change)="fileChange($event,'profile')" name="profilePic" accept=".png,.jpg,.jpeg">
+
+        <input id="fileInputMain" type="file" (change)="fileChange($event,'main')" name="mainPic" accept=".png,.jpg,.jpeg">
+
+        <input id="fileInputAdditional" type="file" (change)="fileChange($event,'additional')" name="additionalPic" accept=".png,.jpg,.jpeg">
+
+    </mat-card-content>
+  </mat-card>
+
+
+  <mat-card *ngIf="uploadState && formGroup.valid" class="submit-button-div">
+    <mat-card-content>
+      <button class="primary" mat-button (click)="upload()">Add a new Animal 😻</button>
+    </mat-card-content>
+  </mat-card>
+
+
+
+
+
+</div>
+  <footer style="height: 50%;"></footer>
+</div>
+
+
+
+
+
+<!--<div class="form-group col-12">
+  <input type="file"
+         id="file"
+         #userPhoto
+         (change)="onFileSelected($event)"
+         name="image"
+         autocomplete="off"
+  />
+</div>-->

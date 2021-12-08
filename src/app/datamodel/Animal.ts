@@ -12,6 +12,7 @@ export interface Links {
 }
 
 export interface AnimalEntity {
+  id:number;
   name: string;
   animalType: string;
   age: number;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {AnimalEntity, RootObject} from "../app/datamodel/Animal";
+import * as http from "http";
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,24 @@ export class AnimalService {
 
   }
 
-  getAllAnimalsPaged(pageNum:number) :Observable<AnimalEntity[]>{
+  getAllAnimalsPaged(pageNum:number) :Observable<RootObject>{
     const path = "/animalEntities?page="+pageNum+"&size="+this.pageSize;
-    return this.http.get<RootObject>(this.baseURL+path)
-      .pipe(
-        map(data=>data._embedded.animalEntities)
-      )
+    return this.http.get<RootObject>(this.baseURL+path);
+
   }
 
+  getAnimalById(animalId: number) {
+    const path = "/animalEntities/id?id="+animalId;
+    return this.http.get<AnimalEntity>(this.baseURL+path);
+  }
+
+  uploadAnimal(animal: { name: string; animalType: string; description: string; age: number }) {
+    const path = "/animalEntities";
+    console.log("inside service");
+    console.table(animal)
+
+    const headers = { 'content-type': 'application/json'}
+
+    return this.http.post<AnimalEntity>(this.baseURL+path,animal,{headers});
+  }
 }

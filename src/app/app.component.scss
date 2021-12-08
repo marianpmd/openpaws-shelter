@@ -1,40 +1,67 @@
-img.twitter{
+img.twitter {
   padding-left: 10px;
 }
-a.links{
+
+a.links {
   display: flex;
   position: center;
   justify-content: center;
 }
 
-mat-drawer-container{
+mat-drawer-container {
   height: 100%;
 }
 
-img.github{
+mat-list {
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+}
+
+mat-list-item:last-child {
+  margin-top: auto;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+mat-list-item:first-child {
+  padding: 0;
+}
+
+img.github {
   padding-right: 10px;
 }
 
-.logo{
+.logo {
   width: 35px;
   padding-left: 10px;
 }
 
 
-.logo-text{
+.logo-text {
   font-family: 'Fredoka One', cursive;
   font-weight: 10;
   color: pink;
 }
 
-.isActive{
-  background-color: #673ab7;
+.isActive {
+  background-color: #ff4081;
 }
 
-mat-list{
-  mat-list-item{
-    button{
+mat-list {
+  mat-list-item {
+    button {
       width: 100%;
     }
   }
+}
+
+.toggle-div{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }

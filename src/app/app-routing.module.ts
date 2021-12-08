@@ -2,11 +2,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ContactComponent} from "./contact/contact.component";
+import {AnimalComponent} from "./animal/animal.component";
+import {UploadComponent} from "./upload/upload.component";
+
 
 const routes: Routes = [
   {
     path : "contact",
     component:ContactComponent
+  },
+  {
+    path : "upload",
+    component:UploadComponent
+  },
+  {
+    path : "animal",
+    component:AnimalComponent
   },
   {
     path: "",
