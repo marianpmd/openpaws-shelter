@@ -9,7 +9,7 @@ import * as http from "http";
 })
 export class AnimalService {
   private baseURL:string = "http://localhost:8080"
-  private pageSize:number = 9;
+  private pageSize:number = 2;
   constructor(private http:HttpClient) {
 
   }
@@ -18,6 +18,10 @@ export class AnimalService {
     const path = "/animalEntities?page="+pageNum+"&size="+this.pageSize;
     return this.http.get<RootObject>(this.baseURL+path);
 
+  }
+  getAllAnimals(){
+    const path = "/animalEntities";
+    return this.http.get<RootObject>(this.baseURL+path);
   }
 
   getAnimalById(animalId: number) {

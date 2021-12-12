@@ -1,12 +1,53 @@
 .main-div{
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 20px;
+  flex-wrap: wrap;
 
+  overflow-y: scroll;
 
 }
 .first-card{
+  max-width: 400px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 
+.red{
+  color: red;
+}
+
+.green{
+  color: lawngreen;
+}
+
+.second-card{
+  max-width: 400px;
+  margin-top: 15px;
+  height: 80%;
+}
+.content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  mat-form-field{
+    width: 100%;
+  }
+}
+
+.spacer{
+  height: 200px;
+}
+
+@media (min-width:868px){
+  .main-div{
+    height: auto;
+  }
+}

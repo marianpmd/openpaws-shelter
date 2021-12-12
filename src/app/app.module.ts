@@ -33,6 +33,8 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { DARK_MODE_OPTIONS } from 'angular-dark-mode';
 import {NgxDarkmodeModule} from "ngx-darkmode";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     ContactComponent,
     AnimalComponent,
     UploadComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatTooltipModule,
     MatAutocompleteModule,
     NgxDarkmodeModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule
   ],
   providers: [
     {

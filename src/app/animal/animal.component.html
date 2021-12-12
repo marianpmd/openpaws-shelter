@@ -1,4 +1,4 @@
-<div class="main-div">
+
   <carousel
     [objectFit]="'cover'"
     [cellWidth]="'100%'"
@@ -6,40 +6,69 @@
     [autoplay]="true"
     [dots]="true"
     [loop]="true"
-    [arrowsTheme]="'dark'" >
+    [arrowsTheme]="'dark'">
 
     <div class="carousel-cell">
       <img [src]="profile" alt="">
-    </div> <div class="carousel-cell">
+    </div>
+    <div class="carousel-cell">
       <img [src]="main" alt="">
-    </div> <div class="carousel-cell">
+    </div>
+    <div class="carousel-cell">
       <img [src]="additional" alt="">
     </div>
   </carousel>
 
+  <div class="main-div">
+    <mat-card class="first-card">
 
-  <mat-card >
-    <mat-card-header>
-      <mat-card-title class="card-title">Information about {{animalData.name}}</mat-card-title>
-    </mat-card-header>
+      <mat-card-title>Information about {{animalData.name}}</mat-card-title>
 
-    <mat-card-content class="first-card">
-      <table>
-        <tr>
-          <td>🔞</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
-    </mat-card-content>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>Age : {{animalData.age}}</mat-list-item>
+          <mat-list-item>Type : {{animalData.animalType}}</mat-list-item>
+          <mat-list-item>Short Description : {{animalData.description}}</mat-list-item>
+          <mat-list-item><span
+            [ngClass]="{'red': animalData.status === 'IN_CUSTODY' , 'green': animalData.status === 'ADOPTED'}">Current Status : {{clearStatus(animalData.status)}}</span>
+          </mat-list-item>
+        </mat-list>
+
+      </mat-card-content>
 
 
-  </mat-card>
+    </mat-card>
+
+    <mat-card class="second-card">
+      <mat-card-title>Do you wish to change the status ?</mat-card-title>
+      <mat-card-content class="content">
+        <mat-form-field appearance="fill">
+          <mat-label>Issuer Email</mat-label>
+          <input matInput [formControl]="issuerEmail" required>
+          <mat-error *ngIf="issuerEmail.invalid">You must specify your email!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Action Description</mat-label>
+          <input matInput [formControl]="description" required>
+          <mat-error *ngIf="description.invalid">A short description must be provided!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select (selectionChange)="onSelectionChange($event)" required [formControl]="statusType">
+            <mat-option value="IN_CUSTODY">In custody</mat-option>
+            <mat-option value="ADOPTED">Adopted</mat-option>
+          </mat-select>
+          <mat-error *ngIf="statusType.invalid">The type of the animal is required!</mat-error>
+        </mat-form-field>
 
 
+      </mat-card-content>
+    </mat-card>
 
 
-</div>
+  </div>
+  <div class="spacer">
+
+  </div>

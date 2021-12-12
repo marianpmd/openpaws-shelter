@@ -6,9 +6,24 @@ export interface AnimalEntity2 {
   href: string;
 }
 
+export interface ActionEntity2 {
+  href: string;
+}
+
 export interface Links {
   self: Self;
   animalEntity: AnimalEntity2;
+  actionEntity: ActionEntity2;
+}
+
+export interface ActionEntity {
+  id:number
+  date: Date;
+  description: string;
+  actionType: string;
+  animalId:number;
+  issuerEmail: string;
+
 }
 
 export interface AnimalEntity {
@@ -17,11 +32,13 @@ export interface AnimalEntity {
   animalType: string;
   age: number;
   description: string;
+  status:string;
   _links: Links;
 }
 
 export interface Embedded {
   animalEntities: AnimalEntity[];
+  actionEntities: ActionEntity[];
 }
 
 export interface First {

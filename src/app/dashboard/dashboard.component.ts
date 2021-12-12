@@ -5,8 +5,6 @@ import {debounceTime, distinctUntilChanged, map, Observable, startWith, switchMa
 import {ViewportScroller} from "@angular/common";
 import {Router} from "@angular/router";
 import {FirebaseService} from "../../service/firebase.service";
-import {DomSanitizer} from "@angular/platform-browser";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {FormControl} from "@angular/forms";
 
 export interface ImgRef {
@@ -21,11 +19,10 @@ export interface ImgRef {
 })
 export class DashboardComponent implements OnInit {
   myControl = new FormControl();
-  options!: string[];
   filteredOptions!: Observable<any>;
 
 
-  public data: AnimalEntity[] | undefined;
+  public data!: AnimalEntity[];
   private pageInfo: Page | undefined;
 
   imgRefMap = new Map<number, ImgRef>();
@@ -33,9 +30,7 @@ export class DashboardComponent implements OnInit {
   constructor(private service: AnimalService,
               private scroll: ViewportScroller,
               private router: Router,
-              public firebase: FirebaseService,
-              private sanitizer: DomSanitizer,
-              private store: AngularFireStorage) {
+              public firebase: FirebaseService) {
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
@@ -51,7 +46,7 @@ export class DashboardComponent implements OnInit {
   // filter and return the values
   filter(val: string): Observable<any[]> {
     // call the service which makes the http-request
-    return this.service.getAllAnimalsPaged(0)
+    return this.service.getAllAnimals()
       .pipe(
         map(response => response._embedded.animalEntities.filter(option => {
           return option.name.toLowerCase().indexOf(val.toLowerCase()) === 0
@@ -87,9 +82,17 @@ export class DashboardComponent implements OnInit {
     if (this.pageInfo!.number != this.pageInfo!.totalPages) {
       console.log("CALLING");
       this.service.getAllAnimalsPaged(this.pageInfo!.number + 1)
-        .subscribe(data => {
+        .subscribe(async data => {
           this.data = this.data?.concat(data._embedded.animalEntities)
           this.pageInfo = data.page;
+
+          for (const value of data._embedded.animalEntities) {
+            let imgRef: ImgRef = {
+              profile: await this.getPictureLink(value.id, 'profile'),
+              main: await this.getPictureLink(value.id, 'main'),
+            }
+            this.imgRefMap.set(value.id, imgRef);
+          }
         });
     } else {
       console.log("END");

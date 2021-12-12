@@ -4,6 +4,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ContactComponent} from "./contact/contact.component";
 import {AnimalComponent} from "./animal/animal.component";
 import {UploadComponent} from "./upload/upload.component";
+import {HistoryComponent} from "./history/history.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path : "upload",
     component:UploadComponent
+  },
+  {
+    path : "history",
+    component:HistoryComponent
   },
   {
     path : "animal",
